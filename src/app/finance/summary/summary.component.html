@@ -1,0 +1,21 @@
+<div class="row row-content">
+  <h5 style="display: inline">ACCOUNT FOR THE YEAR ENDED</h5>
+  <select [(ngModel)]="selectedFYIdx">
+  <option  *ngFor="let summary of summaries_fy; let i = index;" 
+  [value]="i" [selected]="selectedFYIdx == i"
+  >{{summary.fy}}</option>
+</select>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <tabset>
+      <tab heading="INCOME & EXPENDITURE">
+        <img [src]="summaries_fy[selectedFYIdx]?.inc_exp.doc_url" class="img img-responsive" style="padding: 4px 2px;">
+      </tab>
+      <tab heading="RECEIPTS & PAYMENTS">
+        <img src="{{summaries_fy[selectedFYIdx]?.receipt.doc_url}}" class="img img-responsive" style="padding: 4px 2px;">
+      </tab>
+    </tabset>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~assets/css/bootstrap.css';
+
+/*@import '~assets/css/bootstrap-grid.css';
+@import '~assets/css/bootstrap-reboot.css';*/
+
+@import '~assets/css/deeppurple-amber.css';
+@import '~assets/css/font-awesome.min.css';
+@import '~assets/css/bootstrap-social.css';
+@import '~assets/css/orgchart.css';
+body {
+    padding-top: 90px;
+    /*z-index: 0;*/
+    background-color: #ededed;
+    font-family: 'Abel', sans-serif !important;
+}
+
+ngb-carousel {
+    /*width: 800px;*/
+    margin: auto;
+}
+
+carousel-item {
+    margin: auto;
+}
+
+.nav-item:hover > .dropdown-menu {
+    display: block;
+}
+
+
+/*.nav-item:active > .dropdown-menu{
+    display: none;
+}*/
+
+.dropdown-item:active > .dropdown-menu {
+    display: none;
+}
+
+#contactusmap {
+    height: 10em;
+}
+
+md-card, .card {
+    box-shadow: 1px;
+}
+
+.img_head_logo {
+    max-height: 10em;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+@media (max-width: 545px) {
+    .container {
+        width: 545px;
+    }
+    .xs-hide {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 416px) {
+    .header img.img_company {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .header img.img_company {
+        width: 40%;
+    }
+}
+
+table.google-visualization-orgchart-table {
+    border-collapse: inherit;
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.row-content {
+    margin: 0px auto;
+    padding: 80px 0px 20px 0px;
+    border-bottom: 1px ridge;
+}
+
+.row-footer {
+    background-color: #AfAfAf;
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron {
+    padding: 70px 30px 70px 30px;
+    margin: 0px auto;
+    background: #7986CB;
+    color: floralwhite;
+}
+
+address {
+    font-size: 80%;
+    margin: 0px;
+    color: #0f0f0f;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background: #1A237E;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background: #1A237E;
+}
+
+
+/*.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,*/
+
+
+/*.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #10aA1F;
+    color:#eeeeee;
+}*/
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+    background-color: #10aA1F;
+    color: #000000;
+}
+
+.dropdown-menu> li> a:hover {
+    background-color: #10aA1F;
+    color: #000000;
+}
+
+/*a[appHighlight] {
+    border: 4px rebeccapurple solid;
+}*/

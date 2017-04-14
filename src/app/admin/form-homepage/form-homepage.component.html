@@ -1,0 +1,13 @@
+<div class="row">
+  <form novalidate [formGroup]="addContact" (submit)="submitContact()" class="form">
+    <md-input-container>
+      <input mdInput type="tel" placeholder="Contact Number" formControlName="number">
+    </md-input-container>
+    <input type="submit" [disabled]="!addContact.valid" value="Add" class="btn btn-primary">
+  </form>
+  <ul class="list-group">
+    <li *ngFor="let contact of contacts, let i = index">
+      {{contact.number}} <i class="fa fa-close" (click)="deleteContact(contact._id, i)" style="cursor: pointer"></i>
+    </li>
+  </ul>
+</div>

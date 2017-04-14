@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="embed-responsive embed-responsive-4by3">
+      <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14484.90799206838!2d93.9605744!3d24.8219096!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x19e6756496ae73d2!2sDynamic+Group+of+Foundations!5e0!3m2!1sen!2sin!4v1486654368057"
+        frameborder="0" style="border:0" allowfullscreen onloadeddata="loaded()">
+      </iframe>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="panel panel-primary" *ngFor="let p of persons">
+    <div class="panel-heading">
+      <div class="panel-title">
+        {{p.tag}}
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="media">
+        <div class="media-left media-middle">
+          <img src="{{p.photo}}" class="media-object thumbnail">
+        </div>
+        <div class="media-body">
+          <div class="media-heading">
+            <h4>{{p.name}}</h4>
+          </div>
+          <h5>{{p.job_title}}</h5>
+          <dl class="dl-horizontal">
+            <dt><i class="fa fa-phone"></i></dt>
+            <dd><a href="tel:+917628018740"><kbd>{{p.contact_number}}</kbd></a></dd>
+            <dt><i class="fa fa-envelope"></i></dt>
+            <dd><a href="mailto:{{p.email}}">{{p.email}}</a></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

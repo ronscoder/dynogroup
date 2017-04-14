@@ -1,0 +1,56 @@
+<div class="row">
+  <h3>
+    Image components for {{imagePagelocation}}
+  </h3>
+</div>
+<div class="row">
+  <form #newImageForm="ngForm" (ngSubmit)="submitNewImage(newImageForm)" role="form">
+    <div class="form-group">
+      <label for="image_url" class="col-sm-2 control-label">Image URL</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image_title" class="col-sm-2 control-label">Image Title</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_title" name="image_title" placeholder="Enter image title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image_subtext" class="col-sm-2 control-label">Image Description</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_subtext" name="image_subtext" placeholder="Enter image description">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" [disabled]="!newImageForm.form.valid">Add image</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Image URL</th>
+      <th>Image Title</th>
+      <th>Image Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let image of imageList | async as images">
+      <td>{{image.image_url}}</td>
+      <td>{{image.image_title}}</td>
+      <td>{{image.image_subtext}}</td>
+      <td><i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i></td>
+      <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
+    </tr>
+  </tbody>
+</table>
+<!--div class="row">
+  <div class="col-xs-11" *ngFor="let image of imageList | async as images">
+    {{image.image_url}} <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+  </div>
+</div-->

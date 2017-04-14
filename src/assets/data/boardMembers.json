@@ -1,0 +1,32 @@
+[
+    {
+        "name": "IrungbamSamanandaSingh",
+        "designation": "President",
+        "occupation": "Educationist",
+        "qualification": "M.Sc"
+    },
+    {
+        "name": "LairenmayumNandakumarSingh",
+        "designation": "Vice-President",
+        "occupation": "Business",
+        "qualification": "B.Com"
+    },
+    {
+        "name": "SoibamJohnySingh",
+        "designation": "Secretary",
+        "occupation": "Educationist",
+        "qualification": "M.A"
+    },
+    {
+        "name": "SenjamKopeshworMeitei",
+        "designation": "Treasurer",
+        "occupation": "Educationist",
+        "qualification": "B.Sc"
+    },
+    {
+        "name": "KingsliLeimapokpam",
+        "designation": "Trustee",
+        "occupation": "Accountant",
+        "qualification": "B.Sc"
+    }
+]

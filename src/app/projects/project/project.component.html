@@ -1,0 +1,17 @@
+<div style="margin-top: 2em">
+  <h2>Add Task</h2>
+  <form (ngSubmit)="addTask(taskForm)" #taskForm="ngForm">
+    <input type="text" placeholder="Task ID" name="task_id" ngModel />
+    <input type="text" placeholder="Task Name" name="task_name" ngModel />
+    <input type="date" placeholder="Start Date" name="start_date" ngModel />
+    <input type="date" placeholder="End Date" name="end_date" ngModel />
+    <!--input type="number" placeholder="Duration" name="duration" ngModel /-->
+    <input type="number" placeholder="Percent Complete" name="percent_complete" ngModel />
+    <select multiple ngModel name="dependencies" [disabled]="tasks.length==0">
+      <option *ngFor="let value of tasks" [value]="value.task_id">{{value.task_name}}</option>
+    </select>
+    <input type="submit" value="submit">
+  </form>
+</div>
+<div id="project_overview" style="margin-top: 2em;">
+</div>

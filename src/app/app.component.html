@@ -1,0 +1,122 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" routerLink="/" class="navbar-brand">
+        <img width="80" src="assets/images/logo.png" (mouseleave)="onmouseenter()" (mouseenter)="onmouseenter()" [@hover]="mouseOnLogo"
+          style="box-shadow: 0px 0px 10px;" class="hidden-xs"><span class="visible-xs">Dynamic Group of Foundations</span>
+      </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organisation 
+          <span class="caret"></span></a>
+
+          <div class="dropdown-menu" aria-labelledby="homeMenu">
+            <li><a href="#" routerLink="/organisation_profile">Organizational Profile</a></li>
+            <li><a routerLink="/fi-summary">Financial Summary</a></li>
+            <li><a routerLink="/annual-reports">Annual Reports</a></li>
+            <li *ngIf="false"><a>FCRA</a></li>
+            <li><a href="#" routerLink="/bankers-auditors">Bankers & Auditors</a></li>
+            <li><a href="#" routerLink="/adminlegal_details">Administrative & Legal Details</a></li>
+
+            <li><a href="#" routerLink="/organisation_structure">Organizational Structure</a></li>
+          </div>
+        </li>
+        <li>
+          <a href="#" routerLink="/verticals">What We Do</a>
+        </li>
+        <li class="nav-item dropdown " *ngIf="false">
+          <a class="nav-link dropdown-toggle" href="#" id="getInvolved" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Involved <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="getInvolved">
+            <li><a class="dropdown-item">Volunteer</a></li>
+            <li><a class="dropdown-item">Donate</a></li>
+            <li><a class="dropdown-item">Sponsor a child</a></li>
+            <!--<a class="dropdown-item">Friends of DGoF</a>-->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" id="projects" routerLink="/projects-info">
+            Projects</a>
+          <!--
+            <a class="nav-link dropdown-toggle" href="#" id="projects" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects</a>
+            <div class="dropdown-menu" aria-labelledby="projects">
+              <a class="dropdown-item">Health</a>
+              <a class="dropdown-item">Economic</a>
+              <a class="dropdown-item">Education</a>
+              <a class="dropdown-item">Social</a>
+            </div>
+            -->
+        </li>
+        <li class="nav-item dropdown" *ngIf="false">
+          <a class="nav-link dropdown-toggle" href="#" id="careers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Careers <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="careers">
+            <li><a class="dropdown-item">Vacancies</a></li>
+            <li><a class="dropdown-item">Apply Now</a></li>
+            <li><a class="dropdown-item">Notice Board</a></li>
+          </div>
+        </li>
+        <li class="nav-item dropdown ">
+
+          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            routerLink="/gallery">
+            Gallery</a>
+          <!--
+             <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="gallery">
+              <li><a class="dropdown-item">Desk of CEO</a></li>
+              <li><a class="dropdown-item">Desk of Project Manager</a></li>
+              <li><a class="dropdown-item">Staff Members</a></li>
+              <li><a class="dropdown-item">Campaigns</a></li>
+              <li><a class="dropdown-item">Health Camps</a></li>
+              <li><a class="dropdown-item">Charity Campaigns</a></li>
+              <li><a class="dropdown-item">Trainings</a></li>
+              <li><a class="dropdown-item">Socio-economic Development</a></li>
+              <li><a class="dropdown-item">Educational</a></li>
+            </div>
+            -->
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" routerLink="./contactus" id="contactus" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Contact Us <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="contactus">
+            <li><a class="dropdown-item" routerLink="/complaints_suggestions">Complaints & Suggestions</a></li>
+          </div>
+        </li>
+      </ul>
+      <address class="nav navbar-nav navbar-right">
+        <a *ngFor="let contact of contacts" href="tel:{{contact.number}}" class=" badge"><i class="fa fa-phone"></i> {{contact.number}} </a>
+        <div class="btn-group" role="group">
+          <a type="button" href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+          <a type="button" href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
+        </div>
+      </address>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="hidden-xs col-sm-1"></div>
+    <div class="col-sm-11">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
+<hr>
+<!-- Page footer -->
+<app-footer>Loading...</app-footer>

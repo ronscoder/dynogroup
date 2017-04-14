@@ -1,0 +1,22 @@
+[
+    ["Board Members","",""],
+    ["Legal Advisor","Board Members",""],
+    ["Project Director","Board Members",""],
+    ["Personal Secretary","Project Director",""],
+    ["Project Manager","Project Director",""],
+    ["Project Officer","Project Manager",""],
+    ["Administrative Officer","Project Manager",""],
+    ["Administrative Assistant","Administrative Officer",""],
+    ["Trainer and Recorder","Administrative Assistant",""],
+    ["Driver","Administrative Assistant",""],
+    ["Sweeper","Administrative Assistant",""],
+    ["Office Assistant","Administrative Assistant",""],
+    ["Finance Officer", "Project Manager", ""],
+    ["Accountant", "Finance Officer", ""],
+    ["Project Co-ordinator (Health)", "Project Officer", ""],
+    ["Field Workers", "Project Co-ordinator (Health)", ""],
+    ["Project Co-ordinator (Socio-economic)", "Project Officer", ""],
+    [{"v": "Field1", "f": "Field Workers"}, "Project Co-ordinator (Socio-economic)", ""],
+    ["Project Co-ordinator (Education)", "Project Officer",""],
+    [{"v": "Field2", "f": "Field Workers"}, "Project Co-ordinator (Education)",""]
+]
