@@ -10,6 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
+        "CNAME",
         "app/data"
       ],
       "index": "index.html",
