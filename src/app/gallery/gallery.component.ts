@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from '../data-service.service';
 import { FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-gallery',
@@ -8,13 +9,14 @@ import { FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  figures: FirebaseListObservable<any[]>;
+  figures: Observable<any[]>;
   constructor(
     private db: DataServiceService
   ) { }
 
   ngOnInit() {
-    this.figures = this.db.getSiteImages("gallery");
+    this.figures = this.db.getSiteImages('gallery').map(vals =>
+      vals.filter((val) => val.deleted !== true));
     // this.db.getGallery().subscribe(
     //   (res) => {
     //     this.figures = res;

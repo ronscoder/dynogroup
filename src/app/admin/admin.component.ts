@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component'
 })
 export class AdminComponent implements OnInit {
   isSignedIn = false;
-  userEmail = "";
+  userEmail = '';
   public alerts: any = [];
   @ViewChild(LoginComponent)
   private LoginComponent: LoginComponent;
@@ -23,6 +23,13 @@ export class AdminComponent implements OnInit {
     private af: AngularFire
   ) { }
   ngOnInit() {
+    this.af.auth.subscribe(
+      auth => {
+        if (auth) {
+          this.isSignedIn = true;
+        }
+      }
+    )
   }
 
   public alertMe(): void {
@@ -38,7 +45,7 @@ export class AdminComponent implements OnInit {
   }
 
   loginSuccess(success: boolean) {
-    console.log('login status:' + success)
+    console.log('login status:' + success);
     this.isSignedIn = success;
   }
 }

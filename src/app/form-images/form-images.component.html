@@ -44,7 +44,14 @@
       <td>{{image.image_url}}</td>
       <td>{{image.image_title}}</td>
       <td>{{image.image_subtext}}</td>
-      <td><i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i></td>
+      <td>
+        <div *ngIf="image.deleted === true; else delete">
+          <button class="btn btn-xs" (click)="restore(image)">Restore</button>
+        </div>
+        <ng-template #delete>
+          <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+        </ng-template>
+      </td>
       <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
     </tr>
   </tbody>

@@ -1,14 +1,16 @@
-<form (ngSubmit)="login(email, password)" #loginForm = "ngForm">
+<form (ngSubmit)="login(email.value, password.value)" #loginForm = "ngForm">
   <div class="form-group">
     <label for="email">Email</label>
-    <input ngModel type="email" required  #email class="form-control" name="email" id="email" >
+    <input ngModel type="email" required  #email class="form-control" name="email" id="email" [value]="email">
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input ngModel type="password" #password class="form-control" name="password" required>
+    <input ngModel type="password" #password class="form-control" name="password" required [value]="pass" tabindex="0">
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">
+      Login <i class="fa fa-spinner fa-spin" *ngIf="loggingIn"></i>
+      </button>
   </div>
 </form>
 <p class="alert-danger">{{msg}}</p>

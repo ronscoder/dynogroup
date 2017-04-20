@@ -95,13 +95,15 @@
           </div>
         </li>
       </ul>
-      <address class="nav navbar-nav navbar-right">
-        <a *ngFor="let contact of contacts" href="tel:{{contact.number}}" class=" badge"><i class="fa fa-phone"></i> {{contact.number}} </a>
-        <div class="btn-group" role="group">
-          <a type="button" href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-          <a type="button" href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
-        </div>
-      </address>
+      <!--a *ngFor="let contact of contacts" href="tel:{{contact.number}}" class=" badge"><i class="fa fa-phone"></i> {{contact.number}} </a-->
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <div class="btn-group">
+            <a type="button" href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a type="button" href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
+          </div>
+        </li>
+      </ul>
 
     </div>
   </div>
@@ -119,4 +121,4 @@
 </div>
 <hr>
 <!-- Page footer -->
-<app-footer>Loading...</app-footer>
+<app-footer><i class="fa fa-spinner fa-spin"></i>Loading...</app-footer>

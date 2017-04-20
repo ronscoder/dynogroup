@@ -11,10 +11,14 @@
   <div class="col-xs-12">
     <tabset>
       <tab heading="INCOME & EXPENDITURE">
-        <img [src]="summaries_fy[selectedFYIdx]?.inc_exp.doc_url" class="img img-responsive" style="padding: 4px 2px;">
+        <app-loader class="text-center" [size]='3' *ngIf="loadingImg1"></app-loader>
+        <img [src]="summaries_fy[selectedFYIdx]?.inc_exp.doc_url" class="img img-responsive" style="padding: 4px 2px;"
+        (load)="loadingImg1 = false;">
       </tab>
       <tab heading="RECEIPTS & PAYMENTS">
-        <img src="{{summaries_fy[selectedFYIdx]?.receipt.doc_url}}" class="img img-responsive" style="padding: 4px 2px;">
+        <app-loader class="text-center" [size]='3' *ngIf="loadingImg2"></app-loader>
+        <img src="{{summaries_fy[selectedFYIdx]?.receipt.doc_url}}" class="img img-responsive" style="padding: 4px 2px;"
+        (load)="loadingImg2 = false;">
       </tab>
     </tabset>
   </div>

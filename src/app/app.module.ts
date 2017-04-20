@@ -47,6 +47,7 @@ import { SummaryComponent } from './finance/summary/summary.component';
 import { FormImagesComponent } from './form-images/form-images.component';
 import { HighlightDirective } from './highlight.directive';
 import { LoginComponent } from './admin/login/login.component';
+import { LoaderComponent } from './common/loader/loader.component';
 
 export const afconfig = {
   apiKey: 'AIzaSyAwZd41BpkvinnJePapf-8KsGNcHsS9hDU',
@@ -90,6 +91,7 @@ export const authConfig = {
     FormImagesComponent,
     HighlightDirective,
     LoginComponent,
+    LoaderComponent,
   ],
   entryComponents: [DisclaimerComponent, WaitComponent, PrivacyComponent, TermsComponent, ResponseComponent],
   imports: [
