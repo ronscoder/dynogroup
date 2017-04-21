@@ -1,0 +1,94 @@
+<div class="row">
+  <h3>
+    Survey Data
+  </h3>
+</div>
+
+<form #newImageForm="ngForm" role="form">
+  <div class="row">
+    <div class="form-group">
+      <label for="year" class="col-sm-2 control-label">Year</label>
+      <div class="col-sm-2">
+        <input type="number" min="2016" maxlength="4" ngModel class="form-control" id="year" name="year" placeholder="Enter year"
+          required>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <label for="location" class="col-sm-2 control-label">Location</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="location" name="location" placeholder="Enter Location" required [disabled]="isYearUpdate">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <label for="image_url" class="col-sm-2 control-label">Image URL</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image_title" class="col-sm-2 control-label">Image Title</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_title" name="image_title" placeholder="Enter image title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image_subtext" class="col-sm-2 control-label">Image Description</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_subtext" name="image_subtext" placeholder="Enter image description">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-primary" [disabled]="!newImageForm.form.valid || isYearUpdate" (click)="submitNewImage(newImageForm)">Add image</button>
+        <button type="button" class="btn btn-primary" [disabled]="!newImageForm.form.valid" (click)="UpdateNewImage(newImageForm)">Update image</button>
+        <button type="reset" class="btn btn-default" (click)="formReset(newImageForm)">Reset</button>
+        <p>{{saveError}}</p>
+      </div>
+    </div>
+  </div>
+</form>
+<app-loader class="text-center" [size]='3' [text]='Loading' *ngIf="isLoading"></app-loader>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Image Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let image of imageList | async; let i = index">
+      <td>{{image.location}}
+        <button class="btn btn-xs" (click)="updateImage(newImageForm, image)">Update photo</button>
+      </td>
+      <td>
+        <ul class="list-unstyled" *ngFor="let yearImage of image.images">
+          <li>{{yearImage | json}}</li>
+          <!--
+          <li>Year: {{yearImage.$key.year}}</li>
+          <li>URL: {{yearImage.$key.image_url}}</li>
+          <li>TItle: {{yearImage.$Key.image_title}}</li>
+          <li>Desc. {{yearImage.$key.image_subtext}}</li>
+          -->
+        </ul>
+      </td>
+      <td>
+        <div *ngIf="image.deleted === true; else delete">
+          <button class="btn btn-xs" (click)="restore(image)">Restore</button>
+        </div>
+        <ng-template #delete>
+          <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+        </ng-template>
+      </td>
+      <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image, i)">Copy</button></td>
+    </tr>
+  </tbody>
+</table>
+<!--div class="row">
+  <div class="col-xs-11" *ngFor="let image of imageList | async as images">
+    {{image.image_url}} <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+  </div>
+</div-->

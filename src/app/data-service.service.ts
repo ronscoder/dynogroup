@@ -17,6 +17,9 @@ export class DataServiceService {
   addSiteImage(imagePageLocation: string, imageData: any) {
     return this.af.database.object('/site_images/' + imagePageLocation).$ref.push(imageData);
   }
+  // pushYearImage(imagePageLocation: string, imageData: any) {
+  //   return this.af.database.object('/site_images/' + imagePageLocation).$ref.push(imageData);
+  // }
   // deleteSiteImage(dd: FirebaseRef) {
 
   // }
