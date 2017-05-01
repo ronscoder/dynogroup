@@ -13,6 +13,7 @@ export class ImageByYearComponent implements OnInit {
   surveyData = [];
   isLoading = true; // Fetching image data
   yearIndex = 0;
+  modalFigure: any;
 
   constructor(
     private db: DataServiceService,
