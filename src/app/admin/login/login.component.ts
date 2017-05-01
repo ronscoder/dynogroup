@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     //   this.loginSuccess.emit(true);
     // }
     // TODO: REmove the line below
-    this.loginSuccess.emit(true); 
+    // this.loginSuccess.emit(true);
     this.email = sessionStorage.getItem('email');
     this.pass = sessionStorage.getItem('pass');
     //   if ((email && pass)) {

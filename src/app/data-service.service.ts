@@ -33,7 +33,7 @@ export class DataServiceService {
     //   observer.next(StaticData.contacts)
     // });
     // return Observable.from(StaticData.contacts);
-    return this.http.get('./assets/data/contacts.json').map((res) => res.json())
+    return this.http.get('./assets/data/contacts.json').map((res) => res.json());
 
   }
 

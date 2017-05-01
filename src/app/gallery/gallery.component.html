@@ -1,31 +1,41 @@
-
-<div class="container" id="gallery">
-  <div class="media-list">
-    <div class="media" *ngFor="let figure of figures | async; even as even; odd as odd">
-      <div class="media-body text-right" *ngIf="odd">
-        <h4 class="media-heading">{{figure.image_title}}</h4>
-        <p><em>{{figure.image_subtext}}</em></p>
+<div class="container">
+  <div class="col-sm-10 col-sm-push-1">
+    <div class="row row-content">
+      <h3>{{groupName}}</h3>
+    </div>
+    <div class="row">
+      <app-loader class="text-center" [size]='3' *ngIf="loading"></app-loader>
+      <label class="alert alert-warning" *ngIf="figures.length == 0  && !loading">No content to display</label>
+      <div class="col-xs-12 col-sm-4" *ngFor="let figure of figures">
+        <a href="#" (click)="modalFigure = figure;" data-toggle="modal" data-target='#imageModal'>
+          <div class="thumbnail">
+            <img src="{{figure.image_url}}">
+            <div class="caption">
+              <h4 style="padding: 0px;">{{figure.image_title}}</h4>
+              <p><small>{{figure.image_subtext}}</small></p>
+            </div>
+          </div>
+        </a>
       </div>
-      <div [ngClass]="{'media-left': even, 'media-right': odd, 'media-middle':true}">
-        <img class="media-object img-rounded" [src]="figure.image_url">
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="imageModal" *ngIf="modalFigure">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{modalFigure.image_title}}</h4>
+          </div>
+          <div class="modal-body">
+            <img class="img img-responsive" src="{{modalFigure.image_url}}">
+          </div>
+          <div class="modal-footer">
+            <div class="caption">
+              {{modalFigure.image_subtext}}
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="media-body" *ngIf="even">
-        <h4 class="media-heading">{{figure.image_title}}</h4>
-        <p><em>{{figure.image_subtext}}</em></p>
-      </div>
-
     </div>
   </div>
-
-  <!--div class="row rounded" *ngFor="let figure of figures | async; even as even; odd as odd" style="margin-bottom: 20px; border: 1px grey solid; box-shadow: 0px 0px 3px; padding: 1em 0 1em 0;">
-
-    <div class="col-xs-12 col-sm-7" [ngClass]="{'col-sm-push-5': even}">
-      <figure>
-        <img class="img img-responsive img-rounded" [src]="figure.image_url">
-      </figure>
-    </div>
-    <div class="col-xs-12 col-sm-5" [ngClass]="{'col-sm-pull-7 text-right':even}">
-      <figcaption innerHTML="<h4>{{figure.image_title}}</h4><p><em>{{figure.image_subtext}}</em></p>"></figcaption>
-    </div>
-  </div-->
 </div>

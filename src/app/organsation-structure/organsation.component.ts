@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { DataServiceService } from '../data-service.service';
+import { body } from './organ_profile_text'
 
 declare var google: any;
 @Component({
@@ -54,13 +55,15 @@ export class AdminLegalDetailsComponent implements OnInit {
   templateUrl: './organ_profile.html'
 })
 export class OrganProfile implements OnInit {
-  p1 = `
-              The Dynamic Group of Foundations is a state level trust under the Indian Trust Act 1882 and Indian Registration Act 1908
-            bearing the Registration Number 27 of 2013 with Head Office located at <i>Khurai Thoudam Leikai, Lamlong, Imphal East, Manipur - 795010</i>.
-            The trust is also registered under Section 12(A) of Income Tax Act, 1961, Government of India.
-  `
+  p1 = `The Dynamic Group of Foundations is a state level trust under the Indian Trust Act 1882 and Indian Registration Act 1908
+            bearing the Registration Number 27 of 2013 with Head Office located at <i>
+            Khurai Thoudam Leikai, Lamlong, Imphal East, Manipur - 795010</i>.
+            The trust is also registered under Section 12(A) of Income Tax Act, 1961, Government of India.`;
+
+  tabTexts = body;
   boardMembers = [];
   memberHeading = [];
+
   constructor(
     private data: DataServiceService
   ) { }

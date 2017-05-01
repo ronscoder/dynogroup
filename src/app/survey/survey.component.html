@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row row-content">
   <h3>
     Survey Data
   </h3>
@@ -14,20 +14,21 @@
       </div>
     </div>
   </div>
+
   <div class="row">
+    <div class="form-group">
+      <label for="image_url" class="col-sm-2 control-label">Image URL</label>
+      <div class="col-sm-10">
+        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required [(ngModel)]="imageUrl">
+        <app-upload-file (result)="setFileURL($event)"></app-upload-file>
+      </div>
+    </div>
     <div class="form-group">
       <label for="location" class="col-sm-2 control-label">Location</label>
       <div class="col-sm-10">
         <input type="text" ngModel class="form-control" id="location" name="location" placeholder="Enter Location" required [disabled]="isYearUpdate">
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <label for="image_url" class="col-sm-2 control-label">Image URL</label>
-      <div class="col-sm-10">
-        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required>
-      </div>
+
     </div>
     <div class="form-group">
       <label for="image_title" class="col-sm-2 control-label">Image Title</label>
@@ -43,8 +44,8 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-primary" [disabled]="!newImageForm.form.valid || isYearUpdate" (click)="submitNewImage(newImageForm)">Add image</button>
-        <button type="button" class="btn btn-primary" [disabled]="!newImageForm.form.valid" (click)="UpdateNewImage(newImageForm)">Update image</button>
+        <button type="button" *ngIf="!isYearUpdate" class="btn btn-primary" [disabled]="!newImageForm.form.valid" (click)="submitNewImage(newImageForm)">Add image</button>
+        <button type="button" *ngIf="isYearUpdate" class="btn btn-primary" [disabled]="!newImageForm.form.valid" (click)="UpdateNewImage(newImageForm)">Update Year Image</button>
         <button type="reset" class="btn btn-default" (click)="formReset(newImageForm)">Reset</button>
         <p>{{saveError}}</p>
       </div>
@@ -56,34 +57,51 @@
   <thead>
     <tr>
       <th>Location</th>
+      <th>Actions</th>
       <th>Image Details</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let image of imageList | async; let i = index">
-      <td>{{image.location}}
+    <tr *ngFor="let image of surveyData; let i = index">
+      <td>{{image.info.location}}
+      </td>
+      <td>
         <button class="btn btn-xs" (click)="updateImage(newImageForm, image)">Update photo</button>
-      </td>
-      <td>
-        <ul class="list-unstyled" *ngFor="let yearImage of image.images">
-          <li>{{yearImage | json}}</li>
-          <!--
-          <li>Year: {{yearImage.$key.year}}</li>
-          <li>URL: {{yearImage.$key.image_url}}</li>
-          <li>TItle: {{yearImage.$Key.image_title}}</li>
-          <li>Desc. {{yearImage.$key.image_subtext}}</li>
-          -->
-        </ul>
-      </td>
-      <td>
-        <div *ngIf="image.deleted === true; else delete">
+        <div *ngIf="image.info.deleted === true; else delete">
           <button class="btn btn-xs" (click)="restore(image)">Restore</button>
         </div>
         <ng-template #delete>
+          <button>
           <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+          </button>
         </ng-template>
+        <!--button class="btn btn-xs" (click)="copyImage(newImageForm, image, i)">Copy</button-->
+
       </td>
-      <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image, i)">Copy</button></td>
+      <td>
+        <table class="table table-condensed">
+          <tr>
+            <th>Year</th>
+            <th>URL</th>
+            <th>Title</th>
+            <th>Desc</th>
+          </tr>
+          <tr *ngFor="let yearImage of image.images; let yearIndex = index">
+            <td>{{yearImage.content.year}}</td>
+            <td>{{yearImage.content.image_url}}</td>
+            <td>{{yearImage.content.image_title}}</td>
+            <td>{{yearImage.content.image_subtext}}</td>
+            <td>
+              <div *ngIf="yearImage.content.deleted === true; else delete">
+                <button class="btn btn-xs" (click)="restoreYearImage(image.key, yearImage.key)">Restore</button>
+              </div>
+              <ng-template #delete>
+                <i class="fa fa-close" (click)="deleteYearImage(image.key, yearImage.key)" style="cursor: pointer"></i>
+              </ng-template>
+            </td>
+          </tr>
+        </table>
+      </td>
     </tr>
   </tbody>
 </table>

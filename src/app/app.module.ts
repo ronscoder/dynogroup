@@ -49,20 +49,22 @@ import { HighlightDirective } from './highlight.directive';
 import { LoginComponent } from './admin/login/login.component';
 import { LoaderComponent } from './common/loader/loader.component';
 import { SurveyComponent } from './survey/survey.component';
+import { ImageByYearComponent } from './gallery/image-by-year/image-by-year.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 export const afconfig = {
-  // apiKey: 'AIzaSyAwZd41BpkvinnJePapf-8KsGNcHsS9hDU',
-  // authDomain: 'site-a0bf0.firebaseapp.com',
-  // databaseURL: 'https://site-a0bf0.firebaseio.com',
-  // projectId: 'site-a0bf0',
-  // storageBucket: 'site-a0bf0.appspot.com',
-  // messagingSenderId: '809395012660'
-  apiKey: "AIzaSyDY96w9z7LWcH8tl0LuD__u3atYnohuC_I",
-  authDomain: "dynogroup-1f713.firebaseapp.com",
-  databaseURL: "https://dynogroup-1f713.firebaseio.com",
-  projectId: "dynogroup-1f713",
-  storageBucket: "dynogroup-1f713.appspot.com",
-  messagingSenderId: "79128301483"
+  apiKey: 'AIzaSyAwZd41BpkvinnJePapf-8KsGNcHsS9hDU',
+  authDomain: 'site-a0bf0.firebaseapp.com',
+  databaseURL: 'https://site-a0bf0.firebaseio.com',
+  projectId: 'site-a0bf0',
+  storageBucket: 'site-a0bf0.appspot.com',
+  messagingSenderId: '809395012660'
+  // apiKey: 'AIzaSyDY96w9z7LWcH8tl0LuD__u3atYnohuC_I',
+  // authDomain: 'dynogroup-1f713.firebaseapp.com',
+  // databaseURL: 'https://dynogroup-1f713.firebaseio.com',
+  // projectId: 'dynogroup-1f713',
+  // storageBucket: 'dynogroup-1f713.appspot.com',
+  // messagingSenderId: '79128301483'
 };
 export const authConfig = {
   provider: AuthProviders.Password,
@@ -100,6 +102,8 @@ export const authConfig = {
     LoginComponent,
     LoaderComponent,
     SurveyComponent,
+    ImageByYearComponent,
+    UploadFileComponent,
   ],
   entryComponents: [DisclaimerComponent, WaitComponent, PrivacyComponent, TermsComponent, ResponseComponent],
   imports: [

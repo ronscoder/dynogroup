@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataServiceService } from '../data-service.service';
 import { FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Rx';
+import { ActivatedRoute } from '@angular/router';
+import { GalleryGroups } from '../helper';
 
 @Component({
   selector: 'app-gallery',
@@ -9,25 +11,34 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  figures: Observable<any[]>;
+  // @Input() group: string;
+  figures = [];
+  loading = false;
+  modalFigure;
+  groupName: string;
+
   constructor(
-    private db: DataServiceService
+    private db: DataServiceService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.figures = this.db.getSiteImages('gallery').map(vals =>
-      vals.filter((val) => val.deleted !== true));
-    // this.db.getGallery().subscribe(
-    //   (res) => {
-    //     this.figures = res;
-    //   }
-    // )
-    // this.figures = [
-    //   { src: "assets/images/gallery/Awang-Kongpal-Govt-High-School-2.jpg", _caption: "<h4>Hundreds of schools in such condition</h4><p><em>Most of these is oblivion to many in charge</em></p>" },
-    //   { src: "assets/images/gallery/A-drain-at-Lamlong.jpg", _caption: "<h4>Hundreds of schools in such condition</h4><p><em>Most of these is oblivion to many in charge</em></p>" },
-    //   { src: "assets/images/gallery/Lamlong-market.jpg", _caption: "<h4>Hundreds of schools in such condition</h4><p><em>Most of these is oblivion to many in charge</em></p>" },
-    //   { src: "assets/images/gallery/Khurai Girls High School.jpg.jpg", _caption: "<h4>Hundreds of schools in such condition</h4><p><em>Most of these is oblivion to many in charge</em></p>" }
-    // ]
+    this.loading = true;
+    this.route.params.subscribe(params => {
+      // console.log(params['group']);
+      const group = params['group'];
+      this.groupName = GalleryGroups.find((val) => {
+        return val.code === group;
+      }).desc;
+      this.db.getSiteImages(group)
+        .map(vals =>
+          vals.filter((val) => val.deleted !== true)).subscribe(values => {
+            console.log(values);
+            this.figures = values;
+            this.loading = false;
+          }, error => {
+            console.error(error);
+          });
+    });
   }
-
 }

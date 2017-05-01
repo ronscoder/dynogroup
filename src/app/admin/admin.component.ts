@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Http } from '@angular/http';
 import { DataServiceService } from '../data-service.service';
 import { AngularFire, AngularFireAuth, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-admin',
@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
           this.isSignedIn = true;
         }
       }
-    )
+    );
   }
 
   public alertMe(): void {

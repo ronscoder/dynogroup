@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { DataServiceService } from '../data-service.service';
 import { animations } from '../animations';
 import { FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs/Rx';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,8 +19,8 @@ export class HomeComponent implements OnInit {
   };
 
   hover = 'off';
-  carousal_images: FirebaseListObservable<any[]>;
-  highlight_images: FirebaseListObservable<any[]>;
+  carousal_images: Observable<any[]>;
+  highlight_images: Observable<any[]>;
   visionText = '';
   constructor(
     private http: Http,
@@ -27,13 +29,19 @@ export class HomeComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.carousal_images = this.data.getSiteImages('carousal');
+    // .filter(val => {
+    //   return val.deleted !== true;
+    // });
     this.carousal_images.subscribe(res => {
       this.loadingStatus.carousal.isLoading = false;
     }, error => {
       this.loadingStatus.carousal.isLoading = false;
       this.loadingStatus.carousal.text = 'Failed:' + error;
     });
-    this.highlight_images = this.data.getSiteImages('home_highlights');
+    this.highlight_images = this.data.getSiteImages('highlights');
+    // .filter(val => {
+    //   return val.deleted !== true;
+    // });
     this.highlight_images.subscribe(res => {
       this.loadingStatus.highlights.isLoading = false;
     }, error => {

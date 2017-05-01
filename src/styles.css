@@ -2,27 +2,31 @@
 
 @import '~assets/css/bootstrap.css';
 
-/*@import '~assets/css/bootstrap-grid.css';
-@import '~assets/css/bootstrap-reboot.css';*/
+/*@import '~assets/css/bootstrap-grid.css';*/
 
 @import '~assets/css/deeppurple-amber.css';
+@import '~assets/css/bootstrap-reboot.css';
 @import '~assets/css/font-awesome.min.css';
 @import '~assets/css/bootstrap-social.css';
 @import '~assets/css/orgchart.css';
 body {
-    padding-top: 90px;
-    /*z-index: 0;*/
-    background-color: #ededed;
-    font-family: 'Abel', sans-serif !important;
+    padding-top: 60px;
+    line-height: 1.6;
+    color: #67696c;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    overflow-x: hidden;
+    text-align: justify;
 }
 
 ngb-carousel {
-    /*width: 800px;*/
+    width: 100%;
     margin: auto;
 }
 
 carousel-item {
-    margin: auto;
+    width: 100%;
 }
 
 .nav-item:hover > .dropdown-menu {
@@ -89,8 +93,7 @@ table.google-visualization-orgchart-table {
 
 .row-content {
     margin: 0px auto;
-    padding: 80px 0px 20px 0px;
-    border-bottom: 1px ridge;
+    padding: 40px 0px 20px 0px;
 }
 
 .row-footer {
@@ -140,6 +143,12 @@ address {
     background-color: #10aA1F;
     color: #000000;
 }
+
+.navbar-default .navbar-nav > li > a {
+    line-height: 12px;
+    text-align: center;
+}
+
 
 /*a[appHighlight] {
     border: 4px rebeccapurple solid;

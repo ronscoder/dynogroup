@@ -1,37 +1,42 @@
-<h2><strong>Only for site administrators</strong></h2>
-<div *ngFor="let alert of alerts">
-  <!--alert [type]="alert.type" dismissible="true">{{ alert.msg }}</alert-->
-  <p class="{{alert.type}}">{{alert.msg}}</p>
-</div>
-<div class="row row-content" *ngIf="!isSignedIn; else adminZone">
-  <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-    <small class="alert-warning">Please login to continue with this section</small>
-    <app-login (loginSuccess)="loginSuccess($event)"></app-login>
-  </div>
-</div>
-<ng-template #adminZone>
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-8">
-      <p class="well-sm">{{userEmail}} <a class="btn btn-danger" (click)="logout()">Log out</a></p>
+<div class="container">
+  <div class="col-sm-10 col-sm-push-1">
+    <h2><strong>Only for site administrators</strong></h2>
+    <div *ngFor="let alert of alerts">
+      <!--alert [type]="alert.type" dismissible="true">{{ alert.msg }}</alert-->
+      <p class="{{alert.type}}">{{alert.msg}}</p>
     </div>
-  </div>
-  <tabset>
-    <!--tab heading='Communications'>
+    <div class="row row-content" *ngIf="!isSignedIn; else adminZone">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <small class="alert-warning">Please login to continue with this section</small>
+        <app-login (loginSuccess)="loginSuccess($event)"></app-login>
+      </div>
+    </div>
+    <ng-template #adminZone>
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-8">
+          <p class="well-sm">{{userEmail}} <a class="btn btn-danger" (click)="logout()">Log out</a></p>
+        </div>
+      </div>
+      <tabset>
+        <!--tab heading='Communications'>
       <app-form-homepage></app-form-homepage>
     </tab-->
-    <tab heading='Survey'>
-      <app-survey></app-survey>
-    </tab>
-    <tab>
-      <ng-template tabHeading>Carousal</ng-template>
-      <app-form-images imagePagelocation="carousal"></app-form-images>
-    </tab>
-    <tab heading='Gallery'>
+        <tab heading='Survey'>
+          <app-survey></app-survey>
+        </tab>
+        <tab>
+          <ng-template tabHeading>Images</ng-template>
+          <app-form-images imagePagelocation="images"></app-form-images>
+        </tab>
+        <!--    <tab heading='Gallery'>
       <app-form-images imagePagelocation="gallery"></app-form-images>
     </tab>
     <tab heading='Highlights'>
       <app-form-images imagePagelocation="home_highlights"></app-form-images>
     </tab>
-  </tabset>
-</ng-template>
-<project pid='P01SD' *ngIf="false"></project>
+    -->
+      </tabset>
+    </ng-template>
+    <project pid='P01SD' *ngIf="false"></project>
+  </div>
+</div>

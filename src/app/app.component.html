@@ -4,7 +4,9 @@
     <div class="navbar-header">
       <a href="#" routerLink="/" class="navbar-brand">
         <img width="80" src="assets/images/logo.png" (mouseleave)="onmouseenter()" (mouseenter)="onmouseenter()" [@hover]="mouseOnLogo"
-          style="box-shadow: 0px 0px 10px;" class="hidden-xs"><span class="visible-xs">Dynamic Group of Foundations</span>
+          style="display: inline;  box-shadow: 0px 0px 10px;" class="hidden-xs">
+        <span class="visible-xs">Dynamic Group of Foundations</span>
+        <!--span>Dynamic Group of Foundations</span-->
       </a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
         aria-controls="navbar">
@@ -68,24 +70,25 @@
           </div>
         </li>
         <li class="nav-item dropdown ">
-
-          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            routerLink="/gallery">
-            Gallery</a>
           <!--
-             <span class="caret"></span></a>
-            <div class="dropdown-menu" aria-labelledby="gallery">
-              <li><a class="dropdown-item">Desk of CEO</a></li>
-              <li><a class="dropdown-item">Desk of Project Manager</a></li>
-              <li><a class="dropdown-item">Staff Members</a></li>
-              <li><a class="dropdown-item">Campaigns</a></li>
-              <li><a class="dropdown-item">Health Camps</a></li>
-              <li><a class="dropdown-item">Charity Campaigns</a></li>
-              <li><a class="dropdown-item">Trainings</a></li>
-              <li><a class="dropdown-item">Socio-economic Development</a></li>
-              <li><a class="dropdown-item">Educational</a></li>
-            </div>
-            -->
+          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            routerLink="/gallery"> -->
+          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Gallery
+          <span class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="gallery">
+            <li><a href="#" [routerLink]="['/gallery', 'pd']">Desk of Project Director</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'pm']">Desk of Project Manager</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'sm']">Staff Members</a></li>
+            <li><a href="#" routerLink="gallery-survey">Survey</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'ac']">Awareness Campaigns</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'hc']">Health Camps</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'cc']">Charity Campaigns</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 't']">Trainings</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'se']">Socio-economic Development</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 'e']">Educational</a></li>
+            <li><a href="#" [routerLink]="['/gallery', 's']">Sports</a></li>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" routerLink="./contactus" id="contactus" data-toggle="dropdown" aria-haspopup="true"
@@ -96,27 +99,19 @@
         </li>
       </ul>
       <!--a *ngFor="let contact of contacts" href="tel:{{contact.number}}" class=" badge"><i class="fa fa-phone"></i> {{contact.number}} </a-->
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <div class="btn-group">
-            <a type="button" href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a type="button" href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
-          </div>
-        </li>
-      </ul>
 
+      <div class="nav navbar-right" style="margin: auto; padding-top: 10px;">
+        <a href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
+      </div>
     </div>
   </div>
 </nav>
 
 
 <div class="container">
-  <div class="row">
-    <div class="hidden-xs col-sm-1"></div>
-    <div class="col-sm-11">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
+
 
 </div>
 <hr>

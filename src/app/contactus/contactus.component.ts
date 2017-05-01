@@ -10,9 +10,9 @@ declare var google: any;
 export class ContactusComponent implements OnInit {
   map: any;
   geoJson: {};
-  formatted_address: string = "Loading address";
+  formatted_address = 'Loading address';
   position: Coordinates;
-  constructor(private http: Http) { }
+  public boolLoading = true;
   persons = [
     {
       name: 'Dynamic Group of Foundations',
@@ -40,9 +40,12 @@ export class ContactusComponent implements OnInit {
       photo: 'assets/images/users/generic_m_150.jpg'
     }
   ]
+  constructor(private http: Http) { }
+
   ngOnInit() {
     // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(this.setPosition.bind(this), this.error_loc, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
+    //   navigator.geolocation.getCurrentPosition(this.setPosition.bind(this), 
+    // this.error_loc, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
     // }
     // else {
 
@@ -77,10 +80,9 @@ export class ContactusComponent implements OnInit {
     console.log(this.geoJson);
   }
   error_loc(err: any) {
-    console.warn(err.code + ":" + err.message);
+    console.warn(err.code + ':' + err.message);
   }
 
-  public boolLoading = true;
   loaded() {
     this.boolLoading = false;
   }

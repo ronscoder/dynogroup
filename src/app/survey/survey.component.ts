@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms'
+import { NgForm, NgModel } from '@angular/forms'
 import { DataServiceService } from '../data-service.service';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -11,16 +11,16 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./survey.component.css']
 })
 export class SurveyComponent implements OnInit {
-  imagePagelocation = "survey";
+  imagePagelocation = 'survey';
   imageList: FirebaseListObservable<any[]>;
-  images: any;
+  surveyData = [];
   // image: FirebaseListObservable<any>;
   saveError = '';
   isYearUpdate = false;
   isLoading = true; // Fetching image data
   isUpdating = false;
   imageToUpdate: any;
-
+  imageUrl;
   constructor(
     private db: DataServiceService,
     private af: AngularFire
@@ -31,17 +31,39 @@ export class SurveyComponent implements OnInit {
     // console.log(this.imageList.toArray())
     this.imageList.subscribe(
       resolve => {
-        console.log(resolve.values());
+        // console.log(resolve.values());
         this.isLoading = false;
       }
     );
+    this.imageList.$ref.on('value', (datasnap) => {
+      this.surveyData = [];
+      const values = datasnap.val();
+      // console.log(values);
+      const keys = Object.keys(values);
+      for (const key of keys) {
+        const value = values[key];
+        const imgKeys = Object.keys(value.images);
+        const images = [];
+        for (const key1 of imgKeys) {
+          images.push({ key: key1, content: value.images[key1] });
+        }
+        this.surveyData.push({
+          key: key,
+          info: value,
+          images: images
+        });
+      }
+    });
+    // console.log(this.surveyData);
+    // this.af.database.list('/site_images/images/');
     // this.imageList.remove();
   }
   submitNewImage(imageData: NgForm) {
     // console.log(imageData.form.value)
     // console.log(imageData.value)
+    const year = imageData.value['year'];
     this.saveError = '';
-    let imageData1 = {
+    const imageData1 = {
       location: imageData.value['location'],
       deleted: false,
       images: [{
@@ -60,13 +82,14 @@ export class SurveyComponent implements OnInit {
         this.saveError = error.message;
         this.isUpdating = false;
       }
-    )
+    );
   }
   deleteSiteImage(imageToDelete: any) {
     /**
      * Soft delete
      */
-    this.imageList.update(imageToDelete.$key, { deleted: true });
+    console.log(imageToDelete);
+    this.imageList.update(imageToDelete.key, { deleted: true });
   }
   copyImage(formRef: NgForm, imageToCopy, index) {
     this.saveError = '';
@@ -81,7 +104,7 @@ export class SurveyComponent implements OnInit {
   }
 
   restore(imageToRestore: any) {
-    this.imageList.update(imageToRestore.$key, { deleted: false });
+    this.imageList.update(imageToRestore.key, { deleted: false });
   }
 
   updateImage(formRef: NgForm, imageToUpdate) {
@@ -93,7 +116,7 @@ export class SurveyComponent implements OnInit {
   fillFormData(formRef: NgForm, image) {
     formRef.form.setValue({
       year: (new Date()).getFullYear(),
-      location: image['location'],
+      location: image.info['location'],
       image_url: '',
       image_title: '',
       image_subtext: ''
@@ -107,13 +130,14 @@ export class SurveyComponent implements OnInit {
 
   UpdateNewImage(formRef: NgForm) {
     this.isUpdating = true;
-    let imageLocation = this.imagePagelocation + '/' + this.imageToUpdate.$key + '/images';
+    const imageLocation = this.imagePagelocation + '/' + this.imageToUpdate.key + '/images';
     console.log(imageLocation);
-    let imageData1 = {
+    const imageData1 = {
       year: formRef.value['year'],
       image_url: formRef.value['image_url'],
       image_title: formRef.value['image_title'],
-      image_subtext: formRef.value['image_subtext']
+      image_subtext: formRef.value['image_subtext'],
+      deleted: false
     };
     this.db.addSiteImage(imageLocation, imageData1).then(
       resolved => {
@@ -123,5 +147,17 @@ export class SurveyComponent implements OnInit {
         this.isUpdating = false;
         this.saveError = error.message;
       });
+  }
+  deleteYearImage(key1, key2) {
+    const ref = this.imageList.$ref.ref.child(key1).child('images').child(key2);
+    this.imageList.update(ref, { deleted: true });
+  }
+  restoreYearImage(key1, key2) {
+    const ref = this.imageList.$ref.ref.child(key1).child('images').child(key2);
+    this.imageList.update(ref, { deleted: false });
+  }
+
+  setFileURL(fileUrl: string) {
+    this.imageUrl = fileUrl;
   }
 }

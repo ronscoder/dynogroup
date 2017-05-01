@@ -3,12 +3,14 @@
     <app-loader class="text-center" [size]='3' [text]='loadingStatus.carousal.text' *ngIf="loadingStatus.carousal.isLoading"></app-loader>
     <carousel>
       <slide *ngFor="let image of carousal_images | async as c_images; let i = index;">
-        <app-loader class="text-center" [size]='3' *ngIf="loadingStatus.carousalImages[i] != false"></app-loader>
-        <img src={{image.image_url}} alt="Random first slide" class="img img-responsive rounded" (load)="loadingStatus.carousalImages[i] = false">
-        <div class="carousel-caption text-center">
-          <h1>{{image.image_title}}</h1>
-          <p>{{image.image_subtext}}</p>
-        </div>
+        <ng-container *ngIf="!image.deleted">
+          <!--app-loader class="text-center" [size]='3' *ngIf="loadingStatus.carousalImages[i] != false"></app-loader-->
+          <img src={{image.image_url}} style="width: 100%;" (load)="loadingStatus.carousalImages[i] = false">
+          <div class="carousel-caption text-center">
+            <h1>{{image.image_title}}</h1>
+            <p>{{image.image_subtext}}</p>
+          </div>
+        </ng-container>
       </slide>
     </carousel>
   </div>
@@ -16,14 +18,16 @@
 <div class="row row-content">
   <div style="display: flex; justify-content: space-around; margin-top: 1em;">
     <app-loader class="text-center" [size]='3' *ngIf="loadingStatus.highlights.isLoading" [text]="loadingStatus.highlights.text"></app-loader>
-    <div class="thumbnail" *ngFor="let image of highlight_images | async as hi_images">
-      <app-loader class="text-center" [size]='3' *ngIf="loadingStatus.highlightImages[i] != false"></app-loader>
-      <img md-card-image src={{image.image_url}} class="img img-responsive" (load)="loadingStatus.highlightImages[i] = false">
-      <div class="caption">
-        <h5>{{image.image_title}}</h5>
-        <a href="#" appHighlight="yellow">{{image.image_subtext}}</a>
+    <ng-container *ngFor="let image of highlight_images | async as hi_images">
+      <div class="thumbnail" *ngIf="!image.deleted">
+        <app-loader class="text-center" [size]='3' *ngIf="loadingStatus.highlightImages[i] != false"></app-loader>
+        <img md-card-image src={{image.image_url}} class="img img-responsive" (load)="loadingStatus.highlightImages[i] = false">
+        <div class="caption">
+          <h5>{{image.image_title}}</h5>
+          <a href="#" appHighlight="yellow">{{image.image_subtext}}</a>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>
 <div class="row row-content">

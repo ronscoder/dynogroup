@@ -1,35 +1,39 @@
-<md-card>
-  <md-card-title>Complaints & Suggestions</md-card-title>
-  {{cform.errors}}
-  <form #cform="ngForm" (ngSubmit)="submit(cform)">
-    <md-input-container><input mdInput ngModel name="firstName" placeholder="First Name" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="middleName" placeholder="Middle Name" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="lastName" placeholder="Last Name" required></md-input-container>
-    <br>
-    <md-input-container><input mdInput ngModel name="houseNo" placeholder="House Number" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="roomNo" placeholder="Room Number"></md-input-container>
-    <br>
-    <md-input-container><input mdInput ngModel name="district" placeholder="District" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="state" placeholder="State" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="country" placeholder="Country" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="pincode" placeholder="Pin Code" required></md-input-container>
-    <br>
-    <md-input-container><input mdInput ngModel name="email" placeholder="Email" type="email" required></md-input-container>
-    <md-input-container><input mdInput ngModel name="phone" placeholder="Phone Number" type="tel"></md-input-container>
-    <br>
-    <md-input-container style="width:100ch">
-      <input mdInput ngModel name="subject" placeholder="Subject" required>
-      </md-input-container>
-    <br>
-    <md-input-container>
-      <textarea mdInput ngModel name="body" placeholder="Maximum 250 letters. Please do not use abusive language." rows="4" cols="100em"
-        maxlength="250" #message>
+<div class="container">
+  <div class="col-sm-8 col-sm-push-2">
+    <md-card>
+      <md-card-title>Complaints & Suggestions</md-card-title>
+      {{cform.errors}}
+      <form #cform="ngForm" (ngSubmit)="submit(cform)">
+        <md-input-container><input mdInput ngModel name="firstName" placeholder="First Name" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="middleName" placeholder="Middle Name" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="lastName" placeholder="Last Name" required></md-input-container>
+        <br>
+        <md-input-container><input mdInput ngModel name="houseNo" placeholder="House Number" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="roomNo" placeholder="Room Number"></md-input-container>
+        <br>
+        <md-input-container><input mdInput ngModel name="district" placeholder="District" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="state" placeholder="State" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="country" placeholder="Country" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="pincode" placeholder="Pin Code" required></md-input-container>
+        <br>
+        <md-input-container><input mdInput ngModel name="email" placeholder="Email" type="email" required></md-input-container>
+        <md-input-container><input mdInput ngModel name="phone" placeholder="Phone Number" type="tel"></md-input-container>
+        <br>
+        <md-input-container style="width:100ch">
+          <input mdInput ngModel name="subject" placeholder="Subject" required>
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <textarea mdInput ngModel name="body" placeholder="Maximum 250 letters. Please do not use abusive language." rows="4" cols="100em"
+            maxlength="250" #message>
         <md-hint align="end">{{message.characterCount}} / 250</md-hint>
         </textarea>
-    </md-input-container>
-    <md-card-actions>
-      <button md-fab type="submit" [disabled]="!cform.form.valid">Send</button>
-    </md-card-actions>
-  </form>
-</md-card>
-<button (click)="test()" *ngIf="false">test</button>
+        </md-input-container>
+        <md-card-actions>
+          <button md-fab type="submit" [disabled]="!cform.form.valid">Send</button>
+        </md-card-actions>
+      </form>
+    </md-card>
+    <button (click)="test()" *ngIf="false">test</button>
+  </div>
+</div>

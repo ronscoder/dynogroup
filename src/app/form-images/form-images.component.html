@@ -1,61 +1,84 @@
-<div class="row">
-  <h3>
-    Image components for {{imagePagelocation}}
-  </h3>
+<div class="row row-content">
+  <div class="row">
+    <div class="form-group">
+      <label for="group" class="col-sm-2 control-label">Select Group</label>
+      <div class="col-sm-10">
+        <select [(ngModel)]="group" class="form-control" id="group" name="group" placeholder="Select group" required (change)="groupChanged(newImageForm)">
+        <option 
+        *ngFor="let group of galleryGroups; let i=index" 
+        [value]="group.code">{{group.desc}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="row">
-  <form #newImageForm="ngForm" (ngSubmit)="submitNewImage(newImageForm)" role="form">
+
+<form #newImageForm="ngForm" role="form">
+  <div class="row">
     <div class="form-group">
       <label for="image_url" class="col-sm-2 control-label">Image URL</label>
       <div class="col-sm-10">
-        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required>
+        <input type="text" ngModel class="form-control" id="image_url" name="image_url" placeholder="Enter image URL" required [(ngModel)]="downloadFilePath">
+        <label>Enter image URL, or upload file
+        <input type="file" class="form-control" id="fire_file" name="fire_file"
+        (change)="onFileChange($event)" [disabled]="uploadingImage">
+        </label>
+        <button class="btn btn-primary" (click)="uploadFile()" [disabled]="!selectedFile">Upload</button>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="form-group">
       <label for="image_title" class="col-sm-2 control-label">Image Title</label>
       <div class="col-sm-10">
-        <input type="text" ngModel class="form-control" id="image_title" name="image_title" placeholder="Enter image title">
+        <input type="text" ngModel class="form-control" id="image_title" name="image_title" placeholder="Enter image title" required>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="form-group">
       <label for="image_subtext" class="col-sm-2 control-label">Image Description</label>
       <div class="col-sm-10">
         <input type="text" ngModel class="form-control" id="image_subtext" name="image_subtext" placeholder="Enter image description">
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" [disabled]="!newImageForm.form.valid">Add image</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!newImageForm.form.valid" (click)="submitNewImage(newImageForm)">Add image</button>
         <button type="reset" class="btn btn-default">Reset</button>
       </div>
     </div>
-  </form>
+  </div>
+</form>
+<div class="row" *ngIf="group">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Image URL</th>
+        <th>Image Title</th>
+        <th>Image Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of imageList | async as images">
+        <td><small>{{image.image_url}}</small></td>
+        <td>{{image.image_title}}</td>
+        <td>{{image.image_subtext}}</td>
+        <td>
+          <div *ngIf="image.deleted === true; else delete">
+            <button class="btn btn-xs" (click)="restore(image)">Restore</button>
+          </div>
+          <ng-template #delete>
+            <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+          </ng-template>
+        </td>
+        <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Image URL</th>
-      <th>Image Title</th>
-      <th>Image Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let image of imageList | async as images">
-      <td>{{image.image_url}}</td>
-      <td>{{image.image_title}}</td>
-      <td>{{image.image_subtext}}</td>
-      <td>
-        <div *ngIf="image.deleted === true; else delete">
-          <button class="btn btn-xs" (click)="restore(image)">Restore</button>
-        </div>
-        <ng-template #delete>
-          <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
-        </ng-template>
-      </td>
-      <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
-    </tr>
-  </tbody>
-</table>
 <!--div class="row">
   <div class="col-xs-11" *ngFor="let image of imageList | async as images">
     {{image.image_url}} <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
