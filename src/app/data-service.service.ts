@@ -23,8 +23,13 @@ export class DataServiceService {
   // deleteSiteImage(dd: FirebaseRef) {
 
   // }
-  getSiteImages(imagePageLocation: string) {
-    return this.af.database.list('/site_images/' + imagePageLocation);
+  getSiteImages(imagePageLocation: string, filter?: {}) {
+    return this.af.database.list('/site_images/' + imagePageLocation, {
+      query: filter
+      // {
+      //   limitToFirst: 1, equalTo: ''
+      // }
+    });
   }
 
   getContacts(): Observable<any> {

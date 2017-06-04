@@ -1,12 +1,13 @@
-<div class="container">
+<div class="row">
   <div class="col-sm-10 col-sm-push-1">
-    <div class="row row-content">
-      <h3>{{groupName}}</h3>
+    <div class="row row-content" style="height: 10em;">
+      <h4>{{groupName}}</h4>
     </div>
     <div class="row">
       <app-loader class="text-center" [size]='3' *ngIf="loading"></app-loader>
       <label class="alert alert-warning" *ngIf="figures.length == 0  && !loading">No content to display</label>
-      <div class="col-xs-12 col-sm-4" *ngFor="let figure of figures">
+      <!--<div class="col-xs-12 col-sm-4" *ngFor="let figure of figures">-->
+      <div style="display:flex; flex-wrap: wrap" *ngFor="let figure of figures">
         <a href="#" (click)="modalFigure = figure;" data-toggle="modal" data-target='#imageModal'>
           <div class="thumbnail">
             <img src="{{figure.image_url}}">
@@ -27,7 +28,7 @@
             <h4 class="modal-title">{{modalFigure.image_title}}</h4>
           </div>
           <div class="modal-body">
-            <img class="img img-responsive" src="{{modalFigure.image_url}}">
+            <img class="img img-responsive center-block" src="{{modalFigure.image_url}}">
           </div>
           <div class="modal-footer">
             <div class="caption">

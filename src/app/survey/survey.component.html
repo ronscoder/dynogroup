@@ -53,58 +53,60 @@
   </div>
 </form>
 <app-loader class="text-center" [size]='3' [text]='Loading' *ngIf="isLoading"></app-loader>
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Actions</th>
-      <th>Image Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let image of surveyData; let i = index">
-      <td>{{image.info.location}}
-      </td>
-      <td>
-        <button class="btn btn-xs" (click)="updateImage(newImageForm, image)">Update photo</button>
-        <div *ngIf="image.info.deleted === true; else delete">
-          <button class="btn btn-xs" (click)="restore(image)">Restore</button>
-        </div>
-        <ng-template #delete>
-          <button>
+<div class="table-responsive">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Actions</th>
+        <th>Image Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of surveyData; let i = index">
+        <td>{{image.info.location}}
+        </td>
+        <td>
+          <button class="btn btn-xs" (click)="updateImage(newImageForm, image)">Update photo</button>
+          <div *ngIf="image.info.deleted === true; else delete">
+            <button class="btn btn-xs" (click)="restore(image)">Restore</button>
+          </div>
+          <ng-template #delete>
+            <button>
           <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
           </button>
-        </ng-template>
-        <!--button class="btn btn-xs" (click)="copyImage(newImageForm, image, i)">Copy</button-->
+          </ng-template>
+          <!--button class="btn btn-xs" (click)="copyImage(newImageForm, image, i)">Copy</button-->
 
-      </td>
-      <td>
-        <table class="table table-condensed">
-          <tr>
-            <th>Year</th>
-            <th>URL</th>
-            <th>Title</th>
-            <th>Desc</th>
-          </tr>
-          <tr *ngFor="let yearImage of image.images; let yearIndex = index">
-            <td>{{yearImage.content.year}}</td>
-            <td>{{yearImage.content.image_url}}</td>
-            <td>{{yearImage.content.image_title}}</td>
-            <td>{{yearImage.content.image_subtext}}</td>
-            <td>
-              <div *ngIf="yearImage.content.deleted === true; else delete">
-                <button class="btn btn-xs" (click)="restoreYearImage(image.key, yearImage.key)">Restore</button>
-              </div>
-              <ng-template #delete>
-                <i class="fa fa-close" (click)="deleteYearImage(image.key, yearImage.key)" style="cursor: pointer"></i>
-              </ng-template>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td>
+          <table class="table table-condensed">
+            <tr>
+              <th>Year</th>
+              <th>URL</th>
+              <th>Title</th>
+              <th>Desc</th>
+            </tr>
+            <tr *ngFor="let yearImage of image.images; let yearIndex = index">
+              <td>{{yearImage.content.year}}</td>
+              <td>{{yearImage.content.image_url}}</td>
+              <td>{{yearImage.content.image_title}}</td>
+              <td>{{yearImage.content.image_subtext}}</td>
+              <td>
+                <div *ngIf="yearImage.content.deleted === true; else delete">
+                  <button class="btn btn-xs" (click)="restoreYearImage(image.key, yearImage.key)">Restore</button>
+                </div>
+                <ng-template #delete>
+                  <i class="fa fa-close" (click)="deleteYearImage(image.key, yearImage.key)" style="cursor: pointer"></i>
+                </ng-template>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <!--div class="row">
   <div class="col-xs-11" *ngFor="let image of imageList | async as images">
     {{image.image_url}} <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>

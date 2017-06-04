@@ -8,7 +8,7 @@ import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { DatepickerModule } from 'ng2-bootstrap/datepicker';
-import { CarouselModule } from 'ng2-bootstrap';
+import { CarouselModule, DropdownModule } from 'ng2-bootstrap';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 import { AdminComponent } from './admin/admin.component';
@@ -51,6 +51,8 @@ import { LoaderComponent } from './common/loader/loader.component';
 import { SurveyComponent } from './survey/survey.component';
 import { ImageByYearComponent } from './gallery/image-by-year/image-by-year.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
+import { HighlightsComponent } from './admin/highlights/highlights.component';
 
 export const afconfig = {
   apiKey: 'AIzaSyAwZd41BpkvinnJePapf-8KsGNcHsS9hDU',
@@ -104,6 +106,8 @@ export const authConfig = {
     SurveyComponent,
     ImageByYearComponent,
     UploadFileComponent,
+    MobileNavComponent,
+    HighlightsComponent,
   ],
   entryComponents: [DisclaimerComponent, WaitComponent, PrivacyComponent, TermsComponent, ResponseComponent],
   imports: [
@@ -116,6 +120,7 @@ export const authConfig = {
     NgbModule.forRoot(),
     DatepickerModule.forRoot(),
     CarouselModule.forRoot(),
+    DropdownModule.forRoot(),
     Ng2PageScrollModule.forRoot(),
     TabsModule.forRoot(),
     AlertModule.forRoot(),

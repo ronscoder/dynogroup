@@ -13,10 +13,16 @@ body {
     padding-top: 60px;
     line-height: 1.6;
     color: #67696c;
-    font-size: 14px;
     font-weight: 300;
     letter-spacing: 0.2px;
     overflow-x: hidden;
+}
+
+p {
+    text-align: justify;
+}
+
+li {
     text-align: justify;
 }
 
@@ -29,18 +35,10 @@ carousel-item {
     width: 100%;
 }
 
-.nav-item:hover > .dropdown-menu {
+
+/*.nav-item:hover > .dropdown-menu {
     display: block;
-}
-
-
-/*.nav-item:active > .dropdown-menu{
-    display: none;
 }*/
-
-.dropdown-item:active > .dropdown-menu {
-    display: none;
-}
 
 #contactusmap {
     height: 10em;
@@ -93,7 +91,7 @@ table.google-visualization-orgchart-table {
 
 .row-content {
     margin: 0px auto;
-    padding: 40px 0px 20px 0px;
+    padding: 20px 0px 20px 0px;
 }
 
 .row-footer {
@@ -115,15 +113,13 @@ address {
     color: #0f0f0f;
 }
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #fff;
-    background: #1A237E;
-}
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+/*.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
-    background: #1A237E;
-}
+    background: #1A237E;*/
+
+
+/*}*/
 
 
 /*.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,*/
@@ -134,19 +130,59 @@ address {
     color:#eeeeee;
 }*/
 
-.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+
+/*.navbar-default .navbar-nav .open .dropdown-menu> li> a:hover {
     background-color: #10aA1F;
     color: #000000;
-}
+}*/
 
+
+/*
 .dropdown-menu> li> a:hover {
     background-color: #10aA1F;
     color: #000000;
 }
 
 .navbar-default .navbar-nav > li > a {
-    line-height: 12px;
-    text-align: center;
+    /*text-align: center;*/
+
+
+/*display: block;
+    line-height: 3px;
+    font-size: 1.2rem;
+    background-color: #999;
+    font-weight: 400;
+    color: #000000;
+}*/
+
+
+li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+.open{
+    display: none;
+}
+/*
+a.dropdown-toggle:hover + .dropdown-menu {
+    display: block;
+}*/
+
+
+/*.nav-item:active > .dropdown-menu{
+    display: none;
+}*/
+
+
+/*.dropdown-item:active > .dropdown-menu {
+    display: none;
+}*/
+
+.dropdown-menu li a {
+    font-size: 1rem;
+}
+
+.fi_yearhead {
+    font-size: 1.2em;
 }
 
 

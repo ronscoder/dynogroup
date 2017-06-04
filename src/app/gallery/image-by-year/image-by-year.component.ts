@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { DataServiceService } from '../../data-service.service';
 
@@ -8,6 +8,7 @@ import { DataServiceService } from '../../data-service.service';
   styleUrls: ['./image-by-year.component.css']
 })
 export class ImageByYearComponent implements OnInit {
+  @Input() limit?: number;
   imagePagelocation = 'survey';
   imageList: FirebaseListObservable<any[]>;
   surveyData = [];
@@ -21,7 +22,7 @@ export class ImageByYearComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.imageList = this.db.getSiteImages(this.imagePagelocation);
+    this.imageList = this.db.getSiteImages(this.imagePagelocation, { limitToFirst: this.limit });
     // console.log(this.imageList.toArray())
     this.imageList.subscribe(
       resolve => {

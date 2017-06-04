@@ -1,42 +1,44 @@
-<div class="container">
-  <div class="col-sm-10 col-sm-push-1">
-<div class="row row-content">
-  <h3>Survey</h3>
-</div>
 <div class="row">
-  <app-loader class="text-center" [size]='3' *ngIf="!surveyData.length"></app-loader>
-  <div class="col-xs-12 col-sm-4" *ngFor="let image of surveyData; let i = index">
-    <a href="#" (click)="modalFigure = image;" data-toggle="modal" data-target='#imageModal' style="text-decoration: none;">
-      <div class="thumbnail">
-        <img src="{{image.images[0].content.image_url}}">
-        <div class="caption">
-          <strong style="padding: 0px;">{{image.info.location}}</strong>
-        </div>
+  <div class="col-sm-10 col-sm-push-1">
+    <div class="row row-content" style="height: 10em;">
+      <h4>Survey</h4>
+    </div>
+    <div class="row">
+      <app-loader class="text-center" [size]='3' *ngIf="!surveyData.length"></app-loader>
+      <!--<div class="col-xs-12 col-sm-4" *ngFor="let image of surveyData; let i = index">-->
+      <div style="display:flex; flex-wrap: wrap" *ngFor="let image of surveyData; let i = index">
+        <a href="#" (click)="modalFigure = image;" data-toggle="modal" data-target='#imageModal' style="text-decoration: none;">
+          <div class="thumbnail">
+            <img src="{{image.images[0].content.image_url}}">
+            <div class="caption">
+              <strong style="padding: 0px;">{{image.info.location}}</strong>
+            </div>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-</div>
-<div class="modal fade" tabindex="-1" role="dialog" id="imageModal" *ngIf="modalFigure">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="imageModal" *ngIf="modalFigure">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">{{modalFigure.images[yearIndex].content.image_title}}</h4>
-      </div>
-      <div class="modal-body">
-        <img class="img img-responsive" src="{{modalFigure.images[yearIndex].content.image_url}}">
-      </div>
-      <div class="modal-footer">
-        <div class="caption">
-          {{modalFigure.images[yearIndex].content.image_subtext}}
-        </div>
-        <div class="nav navbar-nav">
-          <a class="btn btn-link" href="#" (click)="yearIndex=i; false;" *ngFor="let yearImage of modalFigure.images; let i = index"
-            [ngClass]="{'disabled active':modalFigure.images[yearIndex].content.year === yearImage.content.year}">{{yearImage.content.year}}</a>
+            <h4 class="modal-title">{{modalFigure.images[yearIndex].content.image_title}}</h4>
+          </div>
+          <div class="modal-body">
+            <img class="img img-responsive center-block" src="{{modalFigure.images[yearIndex].content.image_url}}">
+          </div>
+          <div class="modal-footer">
+            <div class="caption">
+              {{modalFigure.images[yearIndex].content.image_subtext}}
+            </div>
+            <div class="nav navbar-nav">
+              <a class="btn btn-link" href="#" (click)="yearIndex=i; false;" *ngFor="let yearImage of modalFigure.images; let i = index"
+                [ngClass]="{'disabled active':modalFigure.images[yearIndex].content.year === yearImage.content.year}">{{yearImage.content.year}}</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  </div></div>

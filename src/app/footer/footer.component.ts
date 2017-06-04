@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
     private data: DataServiceService,
   ) {
     this.mdconfig.height = '90%';
-    this.mdconfig.width = '60%';
+    this.mdconfig.width = '80%';
   }
 
   // @HostListener('mouseenter') onmouseenter() {

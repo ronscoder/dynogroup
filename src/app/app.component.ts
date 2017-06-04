@@ -40,4 +40,6 @@ export class AppComponent implements OnInit {
   onmouseenter() {
     this.mouseOnLogo = this.mouseOnLogo === 'off' ? 'on' : 'off';
   }
+
 }
+

@@ -1,0 +1,13 @@
+<div style="padding-top: 1em">
+  <h5>Select the components to be used on the home page</h5>
+  <ng-container *ngFor="let h of highlights | async">
+    <div style="display:block">
+      <label>
+    <input type="checkbox" [value]="h.code" [checked]="h.highlight" (change)="change(h)"> {{h.desc}}</label>
+      <ng-container *ngIf="h.highlight">
+        <input type="number" [(ngModel)]="h.limit"><button (click)="updateLimit(h)">Update</button>
+      </ng-container>
+    </div>
+  </ng-container>
+  <!--<label><input type="checkbox" [value]="survey"> Survey</label>-->
+</div>

@@ -10,17 +10,17 @@
 //             <li><a href="#" [routerLink]="['/gallery', 'e']">Educational</a></li>
 //             <li><a href="#" [routerLink]="['/gallery', 's']">Sports</a></li>
 export const GalleryGroups = [
-    { code: 'pd', desc: 'Desk of Project Director' },
-    { code: 'pm', desc: 'Desk of Project Manager' },
-    { code: 'sm', desc: 'Staff Members' },
-    { code: 'ac', desc: 'Awareness Campaigns' },
-    { code: 'hc', desc: 'Health Camps' },
-    { code: 'cc', desc: 'Charity Campaigns' },
-    { code: 't', desc: 'Trainings' },
-    { code: 'se', desc: 'Socio-economic Development' },
-    { code: 'e', desc: 'Educational' },
-    { code: 's', desc: 'Sports' },
-    { code: 'carousal', desc: 'Carousal' },
-    { code: 'highlights', desc: 'Highlights' },
+    { highlight: true, type: 'g', code: 'pd', desc: 'Desk of Project Director' },
+    { highlight: false, type: 'g', code: 'pm', desc: 'Desk of Project Manager' },
+    { highlight: false, type: 'g', code: 'sm', desc: 'Staff Members' },
+    { highlight: false, type: 'g', code: 'ac', desc: 'Awareness Campaigns' },
+    { highlight: false, type: 'g', code: 'hc', desc: 'Health Camps' },
+    { highlight: false, type: 'g', code: 'cc', desc: 'Charity Campaigns' },
+    { highlight: false, type: 'g', code: 't', desc: 'Trainings' },
+    { highlight: false, type: 'g', code: 'se', desc: 'Socio-economic Development' },
+    { highlight: false, type: 'g', code: 'e', desc: 'Educational' },
+    { highlight: false, type: 'g', code: 's', desc: 'Sports' },
+    { highlight: false, type: 'c', code: 'carousal', desc: 'Carousal' },
+    { highlight: true, type: 's', code: 'survey', desc: 'Survey' },
 ];
 

@@ -15,7 +15,8 @@ import { GalleryGroups } from '../helper';
 export class FormImagesComponent implements OnInit {
   imageList: FirebaseListObservable<any[]>;
   // imageRef: FirebaseListObservable<any[]>;
-  galleryGroups = GalleryGroups;
+  // ** This form handles only gallery and carousal 
+  galleryGroups = GalleryGroups.filter((val) => { return val.type !== 's'; });
   group = this.galleryGroups[0].code;
   // image: FirebaseListObservable<any>;
   selectedFile;

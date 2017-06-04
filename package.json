@@ -1,7 +1,7 @@
 {
   "name": "dgf",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.1",
+  "license": "DGF",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",

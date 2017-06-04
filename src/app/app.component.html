@@ -1,10 +1,11 @@
 <!-- Navigation -->
+<app-mobile-nav class="hide"></app-mobile-nav>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#" routerLink="/" class="navbar-brand">
-        <img width="80" src="assets/images/logo.png" (mouseleave)="onmouseenter()" (mouseenter)="onmouseenter()" [@hover]="mouseOnLogo"
-          style="display: inline;  box-shadow: 0px 0px 10px;" class="hidden-xs">
+        <img width="70" src="assets/images/logo.png" (mouseleave)="onmouseenter()" (mouseenter)="onmouseenter()" [@hover]="mouseOnLogo"
+          style="display: inline;  box-shadow: 0px 0px 10px; position: relative; top: -2px; left:-3px;" class="hidden-xs">
         <span class="visible-xs">Dynamic Group of Foundations</span>
         <!--span>Dynamic Group of Foundations</span-->
       </a>
@@ -19,11 +20,12 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organisation 
+        <li class=" dropdown">
+          <a class="dropdown-toggle" href="#" id="homeMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organisation 
+          <span class="divider"></span>
           <span class="caret"></span></a>
 
-          <div class="dropdown-menu" aria-labelledby="homeMenu">
+          <ul class="dropdown-menu" aria-labelledby="homeMenu">
             <li><a href="#" routerLink="/organisation_profile">Organizational Profile</a></li>
             <li><a routerLink="/fi-summary">Financial Summary</a></li>
             <li><a routerLink="/annual-reports">Annual Reports</a></li>
@@ -32,25 +34,25 @@
             <li><a href="#" routerLink="/adminlegal_details">Administrative & Legal Details</a></li>
 
             <li><a href="#" routerLink="/organisation_structure">Organizational Structure</a></li>
-          </div>
+          </ul>
         </li>
         <li>
           <a href="#" routerLink="/verticals">What We Do</a>
         </li>
-        <li class="nav-item dropdown " *ngIf="false">
-          <a class="nav-link dropdown-toggle" href="#" id="getInvolved" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Involved <span class="caret"></span></a>
-          <div class="dropdown-menu" aria-labelledby="getInvolved">
-            <li><a class="dropdown-item">Volunteer</a></li>
-            <li><a class="dropdown-item">Donate</a></li>
-            <li><a class="dropdown-item">Sponsor a child</a></li>
+        <li class=" dropdown " *ngIf="false">
+          <a class=" dropdown-toggle" href="#" id="getInvolved" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Involved <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="getInvolved">
+            <li><a>Volunteer</a></li>
+            <li><a>Donate</a></li>
+            <li><a>Sponsor a child</a></li>
             <!--<a class="dropdown-item">Friends of DGoF</a>-->
-          </div>
+          </ul>
         </li>
-        <li class="nav-item dropdown">
+        <li class=" dropdown">
           <a href="#" id="projects" routerLink="/projects-info">
             Projects</a>
           <!--
-            <a class="nav-link dropdown-toggle" href="#" id="projects" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class=" dropdown-toggle" href="#" id="projects" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Projects</a>
             <div class="dropdown-menu" aria-labelledby="projects">
               <a class="dropdown-item">Health</a>
@@ -60,23 +62,23 @@
             </div>
             -->
         </li>
-        <li class="nav-item dropdown" *ngIf="false">
-          <a class="nav-link dropdown-toggle" href="#" id="careers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class=" dropdown" *ngIf="false">
+          <a class=" dropdown-toggle" href="#" id="careers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Careers <span class="caret"></span></a>
-          <div class="dropdown-menu" aria-labelledby="careers">
-            <li><a class="dropdown-item">Vacancies</a></li>
-            <li><a class="dropdown-item">Apply Now</a></li>
-            <li><a class="dropdown-item">Notice Board</a></li>
-          </div>
+          <ul class="dropdown-menu" aria-labelledby="careers">
+            <li><a>Vacancies</a></li>
+            <li><a>Apply Now</a></li>
+            <li><a>Notice Board</a></li>
+          </ul>
         </li>
-        <li class="nav-item dropdown ">
+        <li class=" dropdown ">
           <!--
-          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          <a class=" dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             routerLink="/gallery"> -->
-          <a class="nav-link dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class=" dropdown-toggle" href="#" id="gallery" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Gallery
           <span class="caret"></span></a>
-          <div class="dropdown-menu" aria-labelledby="gallery">
+          <ul class="dropdown-menu" aria-labelledby="gallery">
             <li><a href="#" [routerLink]="['/gallery', 'pd']">Desk of Project Director</a></li>
             <li><a href="#" [routerLink]="['/gallery', 'pm']">Desk of Project Manager</a></li>
             <li><a href="#" [routerLink]="['/gallery', 'sm']">Staff Members</a></li>
@@ -88,19 +90,21 @@
             <li><a href="#" [routerLink]="['/gallery', 'se']">Socio-economic Development</a></li>
             <li><a href="#" [routerLink]="['/gallery', 'e']">Educational</a></li>
             <li><a href="#" [routerLink]="['/gallery', 's']">Sports</a></li>
-          </div>
+          </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" routerLink="./contactus" id="contactus" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Contact Us <span class="caret"></span></a>
-          <div class="dropdown-menu" aria-labelledby="contactus">
+        <li class=" dropdown">
+          <a class="dropdown-toggle" href="#" id="contactus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+
+          <ul class="dropdown-menu" aria-labelledby="contactus">
+            <li> <a href="#" routerLink="./contactus">Contact Us</a>
+            </li>
             <li><a class="dropdown-item" routerLink="/complaints_suggestions">Complaints & Suggestions</a></li>
-          </div>
+          </ul>
         </li>
       </ul>
       <!--a *ngFor="let contact of contacts" href="tel:{{contact.number}}" class=" badge"><i class="fa fa-phone"></i> {{contact.number}} </a-->
 
-      <div class="nav navbar-right" style="margin: auto; padding-top: 10px;">
+      <div class="xs-hide nav navbar-right" style="margin: auto; padding-top: 10px;">
         <a href="https://www.facebook.com/DGFManipur/" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
         <a href="mailto:info@dynamicgroupoffoundations.org" class="btn  btn-social-icon"><i class="fa fa-envelope-o"></i></a>
       </div>
@@ -109,10 +113,8 @@
 </nav>
 
 
-<div class="container">
+<div class="container-fluid">
   <router-outlet></router-outlet>
-
-
 </div>
 <hr>
 <!-- Page footer -->

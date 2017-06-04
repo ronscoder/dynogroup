@@ -53,31 +53,33 @@
   </div>
 </form>
 <div class="row" *ngIf="group">
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Image URL</th>
-        <th>Image Title</th>
-        <th>Image Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let image of imageList | async as images">
-        <td><small>{{image.image_url}}</small></td>
-        <td>{{image.image_title}}</td>
-        <td>{{image.image_subtext}}</td>
-        <td>
-          <div *ngIf="image.deleted === true; else delete">
-            <button class="btn btn-xs" (click)="restore(image)">Restore</button>
-          </div>
-          <ng-template #delete>
-            <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
-          </ng-template>
-        </td>
-        <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Image URL</th>
+          <th>Image Title</th>
+          <th>Image Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let image of imageList | async as images">
+          <td><small>{{image.image_url}}</small></td>
+          <td>{{image.image_title}}</td>
+          <td>{{image.image_subtext}}</td>
+          <td>
+            <div *ngIf="image.deleted === true; else delete">
+              <button class="btn btn-xs" (click)="restore(image)">Restore</button>
+            </div>
+            <ng-template #delete>
+              <i class="fa fa-close" (click)="deleteSiteImage(image)" style="cursor: pointer"></i>
+            </ng-template>
+          </td>
+          <td><button class="btn btn-xs" (click)="copyImage(newImageForm, image)">Copy</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <!--div class="row">
   <div class="col-xs-11" *ngFor="let image of imageList | async as images">
